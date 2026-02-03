@@ -37,7 +37,7 @@ def convert_action():
 
 root = tk.Tk()
 root.title("Convertisseur d'unités")
-root.geometry("400x260")
+root.geometry("300x260")
 root.resizable(False, False)
 
 BG_COLOR = "#f5f5f5"
