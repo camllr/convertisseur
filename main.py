@@ -4,12 +4,12 @@
 # 3. appeler les bonnes fonctions de converter.py
 # 4. afficher le résultat
 
-
 from converter import (
   convert_distance,
   convert_temperature,
   convert_weight,
-  convert_volume
+  convert_volume,
+  ask_restart
 )
 
 def main(): 
@@ -35,26 +35,22 @@ def main():
           return
       elif choice == '1':
           convert_distance_interface()
-          recommencer = input("Voulez-vous faire une autre conversion? (oui/non): ").strip().lower()
-          if recommencer != 'oui':
+          if not ask_restart():
               print("Au revoir!")
               return 
       elif choice == '2':
           convert_temperature_interface()
-          recommencer = input("Voulez-vous faire une autre conversion? (oui/non): ").strip().lower()
-          if recommencer != 'oui':
+          if not ask_restart():
               print("Au revoir!")
               return
       elif choice == '3':
           convert_weight_interface()
-          recommencer = input("Voulez-vous faire une autre conversion? (oui/non): ").strip().lower()
-          if recommencer != 'oui':
+          if not ask_restart():
               print("Au revoir!")
               return
       elif choice == '4':
           convert_volume_interface()
-          recommencer = input("Voulez-vous faire une autre conversion? (oui/non): ").strip().lower()
-          if recommencer != 'oui':
+          if not ask_restart():
               print("Au revoir!")
               return
       else:
@@ -72,7 +68,7 @@ def convert_distance_interface():
       
     valid_units = ['m', 'km', 'mi', 'ft', 'cm', 'mm']
     while True:
-      from_unit = input("Entrez l'unité de départ (m, km, mi, ft, cm, mm): ").strip() .lower()
+      from_unit = input("Entrez l'unité de départ (m, km, mi, ft, cm, mm): ").strip().lower()
       if from_unit in valid_units:
         break
       else:

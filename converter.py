@@ -70,3 +70,7 @@ def convert_volume(value, from_unit, to_unit):
     value_in_liters = value * volume_units[from_unit]
     converted_value = value_in_liters / volume_units[to_unit]
     return converted_value
+
+def ask_restart():
+    answer = input("Voulez-vous effectuer une autre conversion ? (oui/non): ").strip().lower()
+    return answer == 'oui'
