@@ -56,8 +56,8 @@ def convert_weight(value, from_unit, to_unit):
 
 
 volume_units = {
-    'L': 1,
-    'mL': 0.001,
+    'l': 1,
+    'ml': 0.001,
     'gal': 3.78541,
     'qt': 0.946353,
     'cl': 0.01,

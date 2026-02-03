@@ -62,8 +62,6 @@ def main():
 
 
 
-
-
 def convert_distance_interface():
     while True:
       try:
@@ -94,33 +92,89 @@ def convert_distance_interface():
         print(e)
 
 
-
-
-
 def convert_temperature_interface():
-    value = float(input("Entrez la valeur à convertir: "))
-    from_unit = input("Entrez l'unité de départ (C, F, K): ")
-    to_unit = input("Entrez l'unité cible (C, F, K): ")
+    while True:
+      try:
+        value = float(input("Entrez la valeur à convertir: "))
+        break
+      except ValueError:
+        print("Veuillez entrer une valeur numérique valide.")
+
+    valid_units = ['C', 'F', 'K']
+    while True:
+      from_unit = input("Entrez l'unité de départ (C, F, K): ").strip().upper()
+      if from_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+    
+    while True:
+      to_unit = input("Entrez l'unité cible (C, F, K): ").strip().upper()
+      if to_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+        
     try:
         result = convert_temperature(value, from_unit, to_unit)
         print(f"{value} {from_unit} = {result} {to_unit}")
     except ValueError as e:
         print(e)
 
+
 def convert_weight_interface():
-    value = float(input("Entrez la valeur à convertir: "))
-    from_unit = input("Entrez l'unité de départ (g, kg, lb, oz): ")
-    to_unit = input("Entrez l'unité cible (g, kg, lb, oz): ")
+    while True:
+      try:
+        value = float(input("Entrez la valeur à convertir: "))
+        break
+      except ValueError:
+        print("Veuillez entrer une valeur numérique valide.")
+
+    valid_units = ['g', 'kg', 'lb', 'oz']
+    while True:
+      from_unit = input("Entrez l'unité de départ (g, kg, lb, oz): ").strip().lower()
+      if from_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+
+    while True:
+      to_unit = input("Entrez l'unité cible (g, kg, lb, oz): ").strip().lower()
+      if to_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+
     try:
         result = convert_weight(value, from_unit, to_unit)
         print(f"{value} {from_unit} = {result} {to_unit}")
     except ValueError as e:
         print(e)
 
+
 def convert_volume_interface():
-    value = float(input("Entrez la valeur à convertir: "))
-    from_unit = input("Entrez l'unité de départ (L, mL, gal): ")
-    to_unit = input("Entrez l'unité cible (L, mL, gal): ")
+    while True:
+      try:
+        value = float(input("Entrez la valeur à convertir: "))
+        break
+      except ValueError:
+        print("Veuillez entrer une valeur numérique valide.")
+
+    valid_units = ['l', 'ml', 'gal', 'qt', 'cl', 'cup']
+    while True:
+      from_unit = input("Entrez l'unité de départ (L, mL, gal, qt, cl, cup): ").strip().lower()
+      if from_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+    
+    while True:
+      to_unit = input("Entrez l'unité cible (L, mL, gal, qt, cl, cup): ").strip().lower()
+      if to_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+
     try:
         result = convert_volume(value, from_unit, to_unit)
         print(f"{value} {from_unit} = {result} {to_unit}")
