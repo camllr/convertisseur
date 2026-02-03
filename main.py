@@ -12,6 +12,14 @@ from converter import (
   ask_restart
 )
 
+from datetime import datetime
+
+def log_history(category, value, from_unit, to_unit, result):
+    with open("history.txt", "a", encoding="utf-8") as f:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        line = f"[{timestamp}] {category}: {value} {from_unit} -> {result} {to_unit}\n"
+        f.write(line)
+
 def main(): 
     print("Bienvenue dans le convertisseur d'unités! Souhaitez-vous convertir aujourd'hui?")
 
@@ -83,7 +91,8 @@ def convert_distance_interface():
 
     try:
         result = convert_distance(value, from_unit, to_unit)
-        print(f"{value} {from_unit} = {result} {to_unit}")
+        print(f"{value} {from_unit} = {round(result, 4)} {to_unit}")
+        log_history("Distance", value, from_unit, to_unit, result)
     except ValueError as e:
         print(e)
 
@@ -113,7 +122,8 @@ def convert_temperature_interface():
         
     try:
         result = convert_temperature(value, from_unit, to_unit)
-        print(f"{value} {from_unit} = {result} {to_unit}")
+        print(f"{value} {from_unit} = {round(result, 4)} {to_unit}")
+        log_history("Temperature", value, from_unit, to_unit, result)
     except ValueError as e:
         print(e)
 
@@ -143,7 +153,8 @@ def convert_weight_interface():
 
     try:
         result = convert_weight(value, from_unit, to_unit)
-        print(f"{value} {from_unit} = {result} {to_unit}")
+        print(f"{value} {from_unit} = {round(result, 4)} {to_unit}")
+        log_history("Weight", value, from_unit, to_unit, result)
     except ValueError as e:
         print(e)
 
@@ -173,7 +184,8 @@ def convert_volume_interface():
 
     try:
         result = convert_volume(value, from_unit, to_unit)
-        print(f"{value} {from_unit} = {result} {to_unit}")
+        print(f"{value} {from_unit} = {round(result, 4)} {to_unit}")
+        log_history("Volume", value, from_unit, to_unit, result)
     except ValueError as e:
         print(e)
 
