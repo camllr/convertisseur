@@ -65,14 +65,37 @@ def main():
 
 
 def convert_distance_interface():
-    value = float(input("Entrez la valeur à convertir: "))
-    from_unit = input("Entrez l'unité de départ (m, km, mi, ft): ")
-    to_unit = input("Entrez l'unité cible (m, km, mi, ft): ")
+    while True:
+      try:
+        value = float(input("Entrez la valeur à convertir: "))
+        break
+      except ValueError:
+        print("Veuillez entrer une valeur numérique valide.")
+      
+    valid_units = ['m', 'km', 'mi', 'ft', 'cm', 'mm']
+    while True:
+      from_unit = input("Entrez l'unité de départ (m, km, mi, ft, cm, mm): ").strip() .lower()
+      if from_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+
+    while True:
+      to_unit = input("Entrez l'unité cible (m, km, mi, ft, cm, mm): ").strip().lower() 
+      if to_unit in valid_units:
+        break
+      else:
+        print("Unité invalide. Veuillez réessayer.")
+
     try:
         result = convert_distance(value, from_unit, to_unit)
         print(f"{value} {from_unit} = {result} {to_unit}")
     except ValueError as e:
         print(e)
+
+
+
+
 
 def convert_temperature_interface():
     value = float(input("Entrez la valeur à convertir: "))
