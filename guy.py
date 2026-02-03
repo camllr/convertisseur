@@ -6,6 +6,7 @@ from converter import (
     convert_volume,
 )
 
+from utils import log_history
 
 def convert_action():
     try:
@@ -24,6 +25,8 @@ def convert_action():
             result = convert_volume(value, from_unit.lower(), to_unit.lower())
         else:
             raise ValueError("Type de conversion inconnu.")
+
+        log_history(category, value, from_unit, to_unit, result)
 
         label_result.config(
             text=f"Résultat : {value} {from_unit} = {result} {to_unit}",
